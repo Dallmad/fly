@@ -1,0 +1,21 @@
+@import 'src/common/styles/mixins';
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  @include flex(_, center, center);
+
+  .board {
+    width: calc(40px * 3);
+    height: calc(40px * 3);
+    @include flex(_, center, center);
+    flex-wrap: wrap;
+
+    .cell {
+      width: 40px;
+      height: 40px;
+      @include flex(_, center, center)
+    }
+  }
+}
+
