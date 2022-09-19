@@ -2,7 +2,9 @@ import React, { FC, useState } from 'react';
 
 import { requestAPI } from 'api';
 import s from 'app/App.module.scss';
+import { AppRoutes } from 'app/Routes/AppRoutes';
 import { ReturnComponentType } from 'common/types/ReturnComponentType';
+import { Footer, Header } from 'features';
 
 export const App: FC = (): ReturnComponentType => {
   // const [recipes, setRecipes] = useState<string[]>([]);
@@ -28,16 +30,14 @@ export const App: FC = (): ReturnComponentType => {
 
   return (
     <div className={s.app}>
+      <Header />
       Tasty food
       <button type="button" onClick={() => getRecipes()}>
         Request
       </button>
-      <div>
-        {/* {recipes.map((el, i) => (
-          <div key={Math.random()}>el</div>
-        ))} */}
-      </div>
       <div>{count}</div>
+      <AppRoutes />
+      <Footer />
     </div>
   );
 };
