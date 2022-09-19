@@ -1,7 +1,9 @@
 export enum PATH {
-  RECIPES = '/recipes',
-  PRODUCTS = '/products',
-  NEWS = '/news',
-  RESTAURANTS = '/restaurants',
+  RECIPE = '/recipe',
+  PRODUCT = '/product',
+  NEW = '/new',
+  RESTAURANT = '/restaurant',
   ERROR404 = '/404',
+  MAIN = '/',
+  ANOTHER = '*',
 }

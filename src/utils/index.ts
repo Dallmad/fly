@@ -1,0 +1,1 @@
+export { makeName } from './makeName';

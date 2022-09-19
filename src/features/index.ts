@@ -5,3 +5,4 @@ export { News } from './news';
 export { Products } from './products';
 export { Restaurants } from './restaurants';
 export { Recipes } from './recipes';
+export { Main } from './main';
