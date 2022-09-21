@@ -1,8 +1,9 @@
-export { Footer } from './footer';
-export { Header } from './header';
-export { Error404 } from './error404';
-export { News } from './news';
-export { Products } from './products';
-export { Restaurants } from './restaurants';
-export { Recipes } from './recipes';
-export { Main } from './main';
+export { Footer } from './footer/Footer';
+export { Error404 } from './error404/Error404';
+export { News } from './news/News';
+export { Products } from './products/Products';
+export { Restaurants } from './restaurants/Restaurants';
+export { Recipes } from './recipes/Recipes';
+export { Main } from './main/Main';
+export { LinkBar } from './linkBar/LinkBar';
+export { Header } from './header/Header';

@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 
-import { instance } from 'api/instance';
+import { instance } from 'api';
 
 export const requestAPI = {
   get() {

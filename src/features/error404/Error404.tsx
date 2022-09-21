@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
-import { ReturnComponentType } from 'common/types/ReturnComponentType';
-import { ERROR404, PAGE_NOT_FOUND } from 'constants/error';
+import { ReturnComponentType } from 'common';
+import { ERROR404, PAGE_NOT_FOUND } from 'constants/index';
 
 export const Error404: FC = (): ReturnComponentType => {
   return (

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
-import { ReturnComponentType } from 'common/types/ReturnComponentType';
+import { ReturnComponentType } from 'common';
 
 export const Footer: FC = (): ReturnComponentType => {
-  return <div>Footer</div>;
+  return <footer>Footer</footer>;
 };

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { ReturnComponentType } from 'common/types/ReturnComponentType';
+import { ReturnComponentType } from 'common';
 
 export const Recipes: FC = (): ReturnComponentType => {
   return <div>Recipes</div>;
