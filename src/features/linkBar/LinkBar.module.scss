@@ -1,0 +1,18 @@
+@import 'src/common/styles/mixins';
+@import 'src/common/styles/variables';
+
+.container {
+  @include flex(row, space-between, center);
+  margin: 10px 0;
+
+  .link {
+    text-decoration: none;
+    @include text($generalFontFamily, 28px, 22px, 700);
+    color: $textColor;
+  }
+
+  .active {
+    text-decoration: none;
+    color: $activeTextColor;
+  }
+}

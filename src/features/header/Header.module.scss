@@ -1,3 +1,50 @@
 @import 'src/common/styles/mixins';
 @import 'src/common/styles/variables';
 
+.header {
+  @include flex(row, space-between, center);
+  height: 60px;
+  border-bottom: 2px solid #1d211f;
+
+  .button_logo {
+    border: none;
+    cursor: pointer;
+
+    .logo {
+      height: 55px;
+      width: 85px;
+    }
+  }
+
+  .search {
+    @include flex(row, space-between, center);
+
+    .input {
+      @include text($activeFormFontFamily, 20px, 16px, 500);
+      min-width: 300px;
+      height: 40px;
+      border: 1px solid $activeTextColor;
+      border-radius: 5px;
+    }
+
+    .button {
+      border: none;
+      height: 40px;
+      background-color: $activeTextColor;
+      border-radius: 5px;
+      margin-left: 5px;
+      cursor: pointer;
+
+      .lens {
+        height: 32px;
+      }
+
+      &:active {
+        background-color: #3d858f;
+      }
+    }
+
+
+  }
+
+}

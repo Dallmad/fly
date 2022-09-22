@@ -1,8 +1,10 @@
 @import 'src/common/styles/mixins';
 
 .app {
-  width: 100vw;
+  @include flex(column, space-between, _);
+  width: 70vw;
+  margin: 0 15vw;
   height: 100vh;
-  @include flex(column, center, center);
+  box-sizing: border-box;
 }
 
