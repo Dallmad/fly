@@ -62,7 +62,7 @@ export type RecipeType = {
   prep_time_minutes: number;
   name: string;
   buzz_id: null;
-  thumbnailUrl: string;
+  thumbnail_url: string;
   is_shoppable: boolean;
   video_id: number;
   compilations: any;

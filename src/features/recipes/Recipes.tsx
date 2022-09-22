@@ -2,6 +2,8 @@ import React, { FC, useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import style from './Recipes.module.scss';
+
 import { ReturnComponentType } from 'common';
 import { Recipe } from 'features/recipes/recipe/Recipe';
 import { AppRootStateType } from 'state';
@@ -20,16 +22,13 @@ export const Recipes: FC = (): ReturnComponentType => {
   };
 
   return (
-    <div>
-      <button type="button" onClick={fetchRecipesHandler}>
-        Request
-      </button>
-      {recipes.count}
-      <div>Redux {recipes.count}</div>
-      {recipes.results.map(({ name, thumbnailUrl, description, id }) => {
+    <div className={style.container}>
+      {/* eslint-disable-next-line camelcase */}
+      {recipes.results.map(({ name, thumbnail_url, description, id }) => {
         return (
           <div key={id}>
-            <Recipe name={name} url={thumbnailUrl} description={description} />
+            {/* eslint-disable-next-line camelcase */}
+            <Recipe name={name} url={thumbnail_url} description={description} />
           </div>
         );
       })}
