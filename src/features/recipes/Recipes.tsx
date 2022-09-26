@@ -15,7 +15,7 @@ export const Recipes: FC = (): ReturnComponentType => {
   const recipes = useSelector<AppRootStateType, RecipesType>(state => state.recipes);
 
   useEffect(() => {
-    dispatch(fetchRecipes() as any);
+    dispatch(fetchRecipes(recipes.from, recipes.size) as any);
   }, []);
   const dispatch = useDispatch();
 

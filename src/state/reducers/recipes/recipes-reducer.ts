@@ -6,6 +6,8 @@ import { requestAPI } from 'api';
 const initialState: RecipesType = {
   count: 0,
   results: [],
+  from: '0',
+  size: '20',
 };
 
 const slice = createSlice({
@@ -16,30 +18,37 @@ const slice = createSlice({
       state.count = action.payload.count;
       state.results = action.payload.results;
     },
+    setNumberItems(state, action: PayloadAction<string>) {
+      state.size = action.payload;
+    },
   },
 });
 
 export const recipesReducer = slice.reducer;
-export const { setRecipes } = slice.actions;
+export const { setRecipes, setNumberItems } = slice.actions;
 
 // thunks
-export const fetchRecipes = () => async (dispatch: Dispatch) => {
-  try {
-    const res = await requestAPI.getRecipes();
+export const fetchRecipes =
+  (from: string, size: string) => async (dispatch: Dispatch) => {
+    try {
+      const res = await requestAPI.getRecipes(size);
 
-    console.log(res.data);
-    dispatch(setRecipes(res.data));
-  } catch (error) {
-    if (error instanceof Error) {
-      console.log(`error${error}`);
+      console.log(res.data);
+      dispatch(setRecipes(res.data));
+      dispatch(setNumberItems(size));
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log(`error${error}`);
+      }
     }
-  }
-};
+  };
 
 // types
 export type RecipesType = {
   count: number;
   results: RecipeType[];
+  from: string;
+  size: string;
 };
 export type RecipeType = {
   is_one_top: boolean;
