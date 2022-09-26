@@ -35,7 +35,7 @@ const initialState: RecipeType = {
   video_ad_content: '',
   seo_title: '',
   country: '',
-  instructions: {},
+  instructions: [],
   language: '',
   brand_id: null,
   aspect_ratio: '',
@@ -85,6 +85,15 @@ export const fetchRecipe = (id: number) => async (dispatch: Dispatch) => {
 };
 
 // types
+export type InstructionRecipeType = {
+  display_text: string;
+  position: number;
+  startTime: number;
+  endTime: number;
+  temperature: number | null;
+  appliance: number | null;
+  id: number;
+};
 export type RecipeType = {
   is_one_top: boolean;
   cook_time_minutes: number;
@@ -117,7 +126,7 @@ export type RecipeType = {
   video_ad_content: string;
   seo_title: string;
   country: string;
-  instructions: any;
+  instructions: InstructionRecipeType[];
   language: string;
   brand_id: null;
   aspect_ratio: string;
