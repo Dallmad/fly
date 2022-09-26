@@ -2,10 +2,12 @@ import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 import thunkMiddleware, { ThunkDispatch } from 'redux-thunk';
 
+import { recipeReducer } from 'state/reducers/recipe/recipe-reducer';
 import { recipesReducer } from 'state/reducers/recipes/recipes-reducer';
 
 const rootReducer = combineReducers({
   recipes: recipesReducer,
+  recipe: recipeReducer,
 });
 
 export const store = configureStore({

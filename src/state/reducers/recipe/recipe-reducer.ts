@@ -3,32 +3,80 @@ import { Dispatch } from 'redux';
 
 import { requestAPI } from 'api';
 
-const initialState: RecipesType = {
-  count: 0,
-  results: [],
+const initialState: RecipeType = {
+  is_one_top: false,
+  cook_time_minutes: 0,
+  promotion: '',
+  keywords: '',
+  show: {},
+  servings_noun_plural: '',
+  canonical_id: '',
+  show_id: 0,
+  draft_status: '',
+  sections: {},
+  tags: {},
+  thumbnail_alt_text: '',
+  credits: {},
+  topics: {},
+  slug: '',
+  servings_noun_singular: '',
+  video_url: '',
+  prep_time_minutes: 0,
+  name: '',
+  buzz_id: null,
+  thumbnail_url: '',
+  is_shoppable: false,
+  video_id: 0,
+  compilations: {},
+  num_servings: 0,
+  brand: null,
+  nutrition: {},
+  tips_and_ratings_enabled: false,
+  video_ad_content: '',
+  seo_title: '',
+  country: '',
+  instructions: {},
+  language: '',
+  brand_id: null,
+  aspect_ratio: '',
+  description: '',
+  inspired_by_url: null,
+  total_time_minutes: 0,
+  nutrition_visibility: '',
+  facebook_posts: {},
+  beauty_url: null,
+  total_time_tier: {},
+  yields: '',
+  original_video_url: '',
+  updated_at: 0,
+  renditions: {},
+  created_at: 0,
+  approved_at: 0,
+  user_ratings: {},
+  id: 0,
 };
 
 const slice = createSlice({
-  name: 'recipes',
+  name: 'recipe',
   initialState,
   reducers: {
-    setRecipes(state, action: PayloadAction<RecipesType>) {
-      state.count = action.payload.count;
-      state.results = action.payload.results;
+    // @ts-ignore
+    setRecipe(state, action: PayloadAction<RecipeType>) {
+      return { ...action.payload };
     },
   },
 });
 
-export const recipesReducer = slice.reducer;
-export const { setRecipes } = slice.actions;
+export const recipeReducer = slice.reducer;
+export const { setRecipe } = slice.actions;
 
 // thunks
-export const fetchRecipes = () => async (dispatch: Dispatch) => {
+export const fetchRecipe = (id: number) => async (dispatch: Dispatch) => {
   try {
-    const res = await requestAPI.getRecipes();
+    const res = await requestAPI.getRecipe(id);
 
     console.log(res.data);
-    dispatch(setRecipes(res.data));
+    dispatch(setRecipe(res.data));
   } catch (error) {
     if (error instanceof Error) {
       console.log(`error${error}`);
@@ -37,10 +85,6 @@ export const fetchRecipes = () => async (dispatch: Dispatch) => {
 };
 
 // types
-export type RecipesType = {
-  count: number;
-  results: RecipeType[];
-};
 export type RecipeType = {
   is_one_top: boolean;
   cook_time_minutes: number;
