@@ -37,9 +37,9 @@ export const Recipe = ({
         <RecipeItem />
       ) : (
         <>
-          <h4>{name}</h4>
-          <img src={`${url}`} alt="recipe-logo" className={style.logo} />
-          <p>{description}</p>
+          <h4 className={style.title}>{name || 'No name'}</h4>
+          <img src={`${url}` || 'No logo'} alt="recipe-logo" className={style.logo} />
+          <p className={style.description}>{description || 'No description'}</p>
         </>
       )}
     </div>

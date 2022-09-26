@@ -25,7 +25,7 @@ export const Recipes: FC = (): ReturnComponentType => {
         ? // eslint-disable-next-line camelcase
           recipes.results.map(({ name, thumbnail_url, description, id }) => {
             return (
-              <NavLink key={id} to={`${PATH.RECIPE}/${id}`}>
+              <NavLink key={id} to={`${PATH.RECIPE}/${id}`} className={style.link}>
                 {/* eslint-disable-next-line camelcase */}
                 <Recipe name={name} url={thumbnail_url} description={description} />
               </NavLink>

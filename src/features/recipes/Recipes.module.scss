@@ -1,4 +1,12 @@
+@import 'src/common/styles/mixins';
+@import 'src/common/styles/variables';
+
 .container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+
+  .link {
+    text-decoration: none;
+
+  }
 }
