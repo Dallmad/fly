@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useSearchParams } from 'react-router-dom';
@@ -15,19 +15,23 @@ import { fetchRecipes, RecipesType } from 'state/reducers/recipes/recipes-reduce
 
 export const Recipes: FC = (): ReturnComponentType => {
   const recipes = useSelector<AppRootStateType, RecipesType>(state => state.recipes);
-  const [numberItems, setNumberItems] = useSearchParams({});
+
+  const [numberItems, setNumberItems] = useState(recipes.size);
   const dispatch = useDispatch();
 
+  const [, setSizeParams] = useSearchParams({ size: `${numberItems}` });
+
   useEffect(() => {
-    dispatch(fetchRecipes(recipes.from, String(numberItems)) as any);
+    dispatch(fetchRecipes(recipes.from, numberItems) as any);
+    setSizeParams({ size: `${numberItems}` });
   }, [numberItems]);
 
   return (
     <div className={style.container}>
       <Select
         className={style.select}
-        value={`${numberItems}`}
-        onChangeOption={() => setNumberItems({ size: `${recipes.size}` })}
+        value={numberItems}
+        onChangeOption={setNumberItems}
         options={ARRAY_FOR_SELECT}
       />
       <div className={style.box}>

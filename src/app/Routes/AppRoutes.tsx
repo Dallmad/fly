@@ -20,7 +20,7 @@ export const AppRoutes: FC = (): ReturnComponentType => {
         {pages.map(({ route, page, id }: Page) => (
           <Route path={route} element={page} key={id} />
         ))}
-        <Route path={`${PATH.RECIPE}?size=${size}`} element={<Recipe />} />
+        <Route path={`${PATH.RECIPE}`} element={<Recipe />} />
         <Route path={`${PATH.RECIPE}/:id`} element={<Recipe />} />
       </Routes>
     </div>
