@@ -19,11 +19,12 @@
     line-clamp: 3;
     box-orient: vertical;
     text-align: center;
-margin: 10px;
+    margin: 10px;
+    max-width: 300px;
   }
 
   .logo {
-    max-width: 100%;
+    max-width: 300px;
     background-repeat: no-repeat;
     border-radius: 5px;
   }
@@ -39,5 +40,6 @@ margin: 10px;
     -webkit-box-orient: vertical;
     line-clamp: 3;
     box-orient: vertical;
+    max-width: 300px;
   }
 }

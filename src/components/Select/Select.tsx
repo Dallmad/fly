@@ -23,14 +23,11 @@ export const Select: React.FC<SuperSelectPropsType> = ({
         </option>
       ))
     : [];
-
   const onChangeCallback = (e: ChangeEvent<HTMLSelectElement>): any => {
     // eslint-disable-next-line no-unused-expressions
     onChange && onChange(e);
     // eslint-disable-next-line no-unused-expressions
     onChangeOption && onChangeOption(e.currentTarget.value);
-
-    // onChange, onChangeOption
   };
 
   return (

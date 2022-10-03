@@ -2,11 +2,21 @@
 @import 'src/common/styles/variables';
 
 .container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  @include flex(column, space-between, center);
 
-  .link {
-    text-decoration: none;
+  .select {
+    height: 25px;
+    width: 50px;
+    padding-left: 5px;
+  }
 
+  .box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    .link {
+      text-decoration: none;
+    }
   }
 }
+

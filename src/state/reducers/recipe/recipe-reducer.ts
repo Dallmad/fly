@@ -60,7 +60,6 @@ const slice = createSlice({
   name: 'recipe',
   initialState,
   reducers: {
-    // @ts-ignore
     setRecipe(state, action: PayloadAction<RecipeType>) {
       return { ...action.payload };
     },

@@ -21,21 +21,25 @@ const slice = createSlice({
     setNumberItems(state, action: PayloadAction<string>) {
       state.size = action.payload;
     },
+    setPage(state, action: PayloadAction<string>) {
+      state.from = action.payload;
+    },
   },
 });
 
 export const recipesReducer = slice.reducer;
-export const { setRecipes, setNumberItems } = slice.actions;
+export const { setRecipes, setNumberItems, setPage } = slice.actions;
 
 // thunks
 export const fetchRecipes =
   (from: string, size: string) => async (dispatch: Dispatch) => {
     try {
-      const res = await requestAPI.getRecipes(size);
+      const res = await requestAPI.getRecipes(from, size);
 
       console.log(res.data);
       dispatch(setRecipes(res.data));
       dispatch(setNumberItems(size));
+      dispatch(setPage(from));
     } catch (error) {
       if (error instanceof Error) {
         console.log(`error${error}`);

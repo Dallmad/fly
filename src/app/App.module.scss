@@ -1,7 +1,7 @@
 @import 'src/common/styles/mixins';
 
 .app {
-  @include flex(column, space-between, _);
+  @include flex(column, flex-start, _);
   width: 70vw;
   margin: 0 15vw;
   height: 100vh;
