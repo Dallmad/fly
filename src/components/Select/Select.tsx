@@ -23,7 +23,7 @@ export const Select: React.FC<SuperSelectPropsType> = ({
         </option>
       ))
     : [];
-  const onChangeCallback = (e: ChangeEvent<HTMLSelectElement>): any => {
+  const onChangeCallback = (e: ChangeEvent<HTMLSelectElement>): void => {
     if (onChange) {
       onChange(e);
     }
