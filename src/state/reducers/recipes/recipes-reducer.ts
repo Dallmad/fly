@@ -8,6 +8,7 @@ const initialState: RecipesType = {
   results: [],
   from: '0',
   size: '20',
+  search: '',
 };
 
 const slice = createSlice({
@@ -24,17 +25,20 @@ const slice = createSlice({
     setPage(state, action: PayloadAction<string>) {
       state.from = action.payload;
     },
+    setSearch(state, action: PayloadAction<string>) {
+      state.search = action.payload;
+    },
   },
 });
 
 export const recipesReducer = slice.reducer;
-export const { setRecipes, setNumberItems, setPage } = slice.actions;
+export const { setRecipes, setNumberItems, setPage, setSearch } = slice.actions;
 
 // thunks
 export const fetchRecipes =
-  (from: string, size: string) => async (dispatch: Dispatch) => {
+  (from: string, size: string, search?: string) => async (dispatch: Dispatch) => {
     try {
-      const res = await requestAPI.getRecipes(from, size);
+      const res = await requestAPI.getRecipes(from, size, search);
 
       dispatch(setRecipes(res.data));
       dispatch(setNumberItems(size));
@@ -52,6 +56,7 @@ export type RecipesType = {
   results: RecipeType[];
   from: string;
   size: string;
+  search: string;
 };
 export type RecipeType = {
   is_one_top: boolean;

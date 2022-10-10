@@ -19,7 +19,6 @@ export const Recipes: FC = (): ReturnComponentType => {
   const recipes = useSelector<AppRootStateType, RecipesType>(state => state.recipes);
 
   const [numberItems, setNumberItems] = useState(recipes.size);
-  // const [startItem, setStartItem] = useState(recipes.from);
 
   const dispatch = useDispatch();
 
@@ -30,12 +29,20 @@ export const Recipes: FC = (): ReturnComponentType => {
 
   const [, setSizeParams] = useSearchParams();
 
-  // console.log(`startItem:${startItem}`, `numberItems:${numberItems}`);
   useEffect(() => {
-    dispatch(fetchRecipes(`${firstContentIndex}`, `${numberItems}`) as any);
-    // setStartItem(`${firstContentIndex}`);
-    setSizeParams({ from: `${firstContentIndex}`, size: `${numberItems}` });
-  }, [numberItems, page]);
+    dispatch(
+      fetchRecipes(`${firstContentIndex}`, `${numberItems}`, recipes.search) as any,
+    );
+    setSizeParams(
+      recipes.search
+        ? {
+            from: `${firstContentIndex}`,
+            size: `${numberItems}`,
+            q: `${recipes.search}`,
+          }
+        : { from: `${firstContentIndex}`, size: `${numberItems}` },
+    );
+  }, [numberItems, page, recipes.search]);
 
   return (
     <div className={style.container}>
