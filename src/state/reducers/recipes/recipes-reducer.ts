@@ -36,7 +36,6 @@ export const fetchRecipes =
     try {
       const res = await requestAPI.getRecipes(from, size);
 
-      console.log(res.data);
       dispatch(setRecipes(res.data));
       dispatch(setNumberItems(size));
       dispatch(setPage(from));

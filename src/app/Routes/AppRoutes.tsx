@@ -1,27 +1,29 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 
-import { useSelector } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { ReturnComponentType } from 'common';
-import { Page, pages } from 'constants/index';
 import { PATH } from 'enums';
+import { Error404 } from 'features/error404/Error404';
+import { Main } from 'features/main/Main';
+import { News } from 'features/news/News';
+import { Products } from 'features/products/Products';
 import { Recipe } from 'features/recipes/recipe/Recipe';
-import { AppRootStateType } from 'state';
+import { Recipes } from 'features/recipes/Recipes';
+import { Restaurants } from 'features/restaurants/Restaurants';
 
 export const AppRoutes: FC = (): ReturnComponentType => {
-  const size = useSelector<AppRootStateType, string>(state => state.recipes.size);
-
-  useEffect(() => {}, [size]);
-
   return (
     <div>
       <Routes>
-        {pages.map(({ route, page, id }: Page) => (
-          <Route path={route} element={page} key={id} />
-        ))}
-        <Route path={`${PATH.RECIPE}`} element={<Recipe />} />
+        <Route path="/" element={<Main />} />
+        <Route path={`${PATH.RECIPE}`} element={<Recipes />} />
         <Route path={`${PATH.RECIPE}/:id`} element={<Recipe />} />
+        <Route path={`${PATH.PRODUCT}`} element={<Products />} />
+        <Route path={`${PATH.NEW}`} element={<News />} />
+        <Route path={`${PATH.RESTAURANT}`} element={<Restaurants />} />
+        <Route path={`${PATH.ERROR404}`} element={<Error404 />} />
+        <Route path={`${PATH.ANOTHER}`} element={<Navigate to={PATH.ERROR404} />} />
       </Routes>
     </div>
   );

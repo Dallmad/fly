@@ -6,10 +6,12 @@ import { NavLink, useSearchParams } from 'react-router-dom';
 import style from './Recipes.module.scss';
 
 import { ReturnComponentType } from 'common';
+import { Paginator } from 'components';
 import { Select } from 'components/Select/Select';
 import { PATH } from 'enums';
 import { ARRAY_FOR_SELECT } from 'enums/ArrayForSelect';
 import { Recipe } from 'features/recipes/recipe/Recipe';
+import { usePagination } from 'hooks';
 import { AppRootStateType } from 'state';
 import { fetchRecipes, RecipesType } from 'state/reducers/recipes/recipes-reducer';
 
@@ -17,14 +19,26 @@ export const Recipes: FC = (): ReturnComponentType => {
   const recipes = useSelector<AppRootStateType, RecipesType>(state => state.recipes);
 
   const [numberItems, setNumberItems] = useState(recipes.size);
+
   const dispatch = useDispatch();
 
-  const [, setSizeParams] = useSearchParams({ size: `${numberItems}` });
+  const { firstContentIndex, lastContentIndex, page, setPage, totalPages } =
+    usePagination({
+      contentPerPage: +recipes.size,
+      count: recipes.count,
+    });
+  const [startItem, setStartItem] = useState(recipes.from);
+  const [, setSizeParams] = useSearchParams({
+    from: `${startItem}`,
+    size: `${numberItems}`,
+  });
 
+  console.log(startItem, lastContentIndex);
   useEffect(() => {
-    dispatch(fetchRecipes(recipes.from, numberItems) as any);
-    setSizeParams({ size: `${numberItems}` });
-  }, [numberItems]);
+    dispatch(fetchRecipes(`${firstContentIndex}`, `${numberItems}`) as any);
+    setStartItem(`${firstContentIndex}`);
+    setSizeParams({ from: `${startItem}`, size: `${numberItems}` });
+  }, [numberItems, page]);
 
   return (
     <div className={style.container}>
@@ -34,18 +48,20 @@ export const Recipes: FC = (): ReturnComponentType => {
         onChangeOption={setNumberItems}
         options={ARRAY_FOR_SELECT}
       />
+      <Paginator page={page} setPage={setPage} totalPages={totalPages} />
       <div className={style.box}>
         {recipes
-          ? // eslint-disable-next-line camelcase
-            recipes.results.map(({ name, thumbnail_url, description, id }) => {
-              return (
-                <NavLink key={id} to={`${PATH.RECIPE}/${id}`} className={style.link}>
-                  {/* eslint-disable-next-line camelcase */}
-                  <Recipe name={name} url={thumbnail_url} description={description} />
-                </NavLink>
-              );
-            })
-          : ''}
+          ? recipes.results
+              // eslint-disable-next-line camelcase
+              .map(({ name, thumbnail_url, description, id }) => {
+                return (
+                  <NavLink key={id} to={`${PATH.RECIPE}/${id}`} className={style.link}>
+                    {/* eslint-disable-next-line camelcase */}
+                    <Recipe name={name} url={thumbnail_url} description={description} />
+                  </NavLink>
+                );
+              })
+          : 'Download...'}
       </div>
     </div>
   );

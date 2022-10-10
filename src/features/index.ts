@@ -1,9 +1,0 @@
-export { Footer } from './footer/Footer';
-export { Error404 } from './error404/Error404';
-export { News } from './news/News';
-export { Products } from './products/Products';
-export { Restaurants } from './restaurants/Restaurants';
-export { Recipes } from './recipes/Recipes';
-export { Main } from './main/Main';
-export { LinkBar } from './linkBar/LinkBar';
-export { Header } from './header/Header';

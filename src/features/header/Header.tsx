@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -6,18 +6,18 @@ import style from './Header.module.scss';
 
 import lens from 'assets/images/lens.png';
 import logo from 'assets/images/tasty-food-logo.png';
-import { ReturnComponentType } from 'common';
+// import { ReturnComponentType } from 'common';
 import { PATH } from 'enums';
 
-export const Header = (): ReturnComponentType => {
+export const Header: FC = () => {
   const navigate = useNavigate();
-  const homeHandle = (): any => {
+  const toHomeHandle = (): void => {
     navigate(`${PATH.MAIN}`);
   };
 
   return (
     <div className={style.header}>
-      <button type="button" onClick={homeHandle} className={style.button_logo}>
+      <button type="button" onClick={toHomeHandle} className={style.button_logo}>
         <img src={logo} alt="logo" className={style.logo} />
       </button>
       <div className={style.search}>

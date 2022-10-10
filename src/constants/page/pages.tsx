@@ -3,7 +3,13 @@
 import { Page } from './types';
 
 import { PATH } from 'enums';
-import { Error404, Main, News, Products, Recipes, Restaurants } from 'features';
+import { Error404 } from 'features/error404/Error404';
+import { Main } from 'features/main/Main';
+import { News } from 'features/news/News';
+import { Products } from 'features/products/Products';
+import { Recipes } from 'features/recipes/Recipes';
+import { Restaurants } from 'features/restaurants/Restaurants';
+
 // import { Recipe } from 'features/recipes/recipe/Recipe';
 
 export const pages: Page[] = [

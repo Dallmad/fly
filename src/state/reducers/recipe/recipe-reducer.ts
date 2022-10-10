@@ -74,7 +74,6 @@ export const fetchRecipe = (id: number) => async (dispatch: Dispatch) => {
   try {
     const res = await requestAPI.getRecipe(id);
 
-    console.log(res.data);
     dispatch(setRecipe(res.data));
   } catch (error) {
     if (error instanceof Error) {

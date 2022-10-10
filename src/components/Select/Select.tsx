@@ -1,16 +1,8 @@
-import React, { SelectHTMLAttributes, DetailedHTMLProps, ChangeEvent } from 'react';
+import React, { ChangeEvent } from 'react';
 
-type DefaultSelectPropsType = DetailedHTMLProps<
-  SelectHTMLAttributes<HTMLSelectElement>,
-  HTMLSelectElement
->;
+import { SelectPropsType } from './types';
 
-type SuperSelectPropsType = DefaultSelectPropsType & {
-  options?: number[];
-  onChangeOption?: (option: string) => void;
-};
-
-export const Select: React.FC<SuperSelectPropsType> = ({
+export const Select: React.FC<SelectPropsType> = ({
   options,
   onChange,
   onChangeOption,
@@ -18,7 +10,7 @@ export const Select: React.FC<SuperSelectPropsType> = ({
 }) => {
   const mappedOptions = options
     ? options.map((o, i) => (
-        <option key={`${o}`} value={o}>
+        <option key={o} value={o}>
           {o}
         </option>
       ))
