@@ -6,6 +6,6 @@ export type UsePaginationReturn = {
   page: number;
   totalPages: number;
   firstContentIndex: number;
-  lastContentIndex: number;
+  /* lastContentIndex: number; */
   setPage: (page: number) => void;
 };

@@ -19,25 +19,22 @@ export const Recipes: FC = (): ReturnComponentType => {
   const recipes = useSelector<AppRootStateType, RecipesType>(state => state.recipes);
 
   const [numberItems, setNumberItems] = useState(recipes.size);
+  // const [startItem, setStartItem] = useState(recipes.from);
 
   const dispatch = useDispatch();
 
-  const { firstContentIndex, lastContentIndex, page, setPage, totalPages } =
-    usePagination({
-      contentPerPage: +recipes.size,
-      count: recipes.count,
-    });
-  const [startItem, setStartItem] = useState(recipes.from);
-  const [, setSizeParams] = useSearchParams({
-    from: `${startItem}`,
-    size: `${numberItems}`,
+  const { firstContentIndex, page, setPage, totalPages } = usePagination({
+    contentPerPage: +recipes.size,
+    count: recipes.count,
   });
 
-  console.log(startItem, lastContentIndex);
+  const [, setSizeParams] = useSearchParams();
+
+  // console.log(`startItem:${startItem}`, `numberItems:${numberItems}`);
   useEffect(() => {
     dispatch(fetchRecipes(`${firstContentIndex}`, `${numberItems}`) as any);
-    setStartItem(`${firstContentIndex}`);
-    setSizeParams({ from: `${startItem}`, size: `${numberItems}` });
+    // setStartItem(`${firstContentIndex}`);
+    setSizeParams({ from: `${firstContentIndex}`, size: `${numberItems}` });
   }, [numberItems, page]);
 
   return (

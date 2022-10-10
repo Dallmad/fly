@@ -25,7 +25,7 @@ export const usePagination = ({
     totalPages: pageCount,
     setPage: setPageSafe,
     firstContentIndex,
-    lastContentIndex,
+    /* lastContentIndex, */
     page,
   };
 };
