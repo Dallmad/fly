@@ -2,7 +2,7 @@
 
 .container {
   @include flex(row, center, center);
-  border: 1px solid #EDEDF4;
+  border: none;
   border-radius: 5px;
   margin: 20px 300px;
 
@@ -10,7 +10,7 @@
     @include flex(row, center, center);
     @include text(Roboto, 20px, 16px, 500);
     border: 1px solid grey;
-    width: 30px;
+    width: 40px;
     height: 30px;
     text-align: center;
     background-color: darkgray;
@@ -20,14 +20,14 @@
   .simplePage {
     @include flex(row, center, center);
     @include text(Roboto, 20px, 16px, 500);
-    width: 30px;
+    width: 40px;
     height: 30px;
     text-align: center;
     color: grey;
     cursor: pointer;
-    border: 1px solid white;
+    border: none;
     &:hover {
-      border: 1px solid grey;
+      border: none;
       background-color: #bebebe;
     }
   }
@@ -38,9 +38,9 @@
     width: 30px;
     height: 30px;
     cursor: pointer;
-    border: 1px solid white;
+    border: none;
     &:hover {
-      border: 1px solid grey;
+      border: none;
       background-color: #bebebe;
     }
   }

@@ -10,7 +10,7 @@ export const Paginator = ({
   setPage,
   totalPages,
 }: PaginatorTypeProps): ReturnComponentType => {
-  const portionSize = 2;
+  const portionSize = 3;
   const pages: number[] = [];
 
   // eslint-disable-next-line no-plusplus
@@ -20,8 +20,12 @@ export const Paginator = ({
 
   const portionCount = Math.ceil(totalPages / portionSize);
   const [portionNumber, setPortionNumber] = useState(1);
-  /* const leftPortionNumber = (portionNumber - 1) * portionSize + 1;
-  const rightPortionNumber = portionNumber * portionSize; */
+  const leftPortionNumber = (portionNumber - 1) * portionSize + 1;
+  const rightPortionNumber = portionNumber * portionSize;
+
+  const changePageHandle = (page: number): void => {
+    setPage(page);
+  };
 
   return (
     <div className={s.container}>
@@ -45,22 +49,44 @@ export const Paginator = ({
       >
         {'<'}
       </button>
+      <button
+        className={page === 1 ? s.selectedPage : s.simplePage}
+        type="button"
+        onClick={() => {
+          setPage(1);
+        }}
+      >
+        1
+      </button>
+      {'\u00A0'}.{'\u00A0'}.{'\u00A0'}.{'\u00A0'}
       {pages
-        // .filter(p => p >= leftPortionNumber && p <= rightPortionNumber)
+        .filter(p => p >= leftPortionNumber && p <= rightPortionNumber)
         .map((p, i) => {
           return (
             // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
-            <span
+            <button
+              type="button"
               key={p}
               onClick={() => {
-                setPage(p);
+                changePageHandle(p);
               }}
               className={page === p ? s.selectedPage : s.simplePage}
             >
-              {p}{' '}
-            </span>
+              {p}
+              {'\u00A0'}
+            </button>
           );
         })}
+      {'\u00A0'}.{'\u00A0'}.{'\u00A0'}.{'\u00A0'}
+      <button
+        className={page === totalPages ? s.selectedPage : s.simplePage}
+        type="button"
+        onClick={() => {
+          setPage(totalPages);
+        }}
+      >
+        {totalPages}
+      </button>
       <button
         type="button"
         className={s.button}

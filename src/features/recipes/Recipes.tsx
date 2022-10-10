@@ -54,7 +54,7 @@ export const Recipes: FC = (): ReturnComponentType => {
       />
       <Paginator page={page} setPage={setPage} totalPages={totalPages} />
       <div className={style.box}>
-        {recipes
+        {recipes.results.length
           ? recipes.results
               // eslint-disable-next-line camelcase
               .map(({ name, thumbnail_url, description, id }) => {
@@ -65,7 +65,7 @@ export const Recipes: FC = (): ReturnComponentType => {
                   </NavLink>
                 );
               })
-          : 'Download...'}
+          : 'No results'}
       </div>
     </div>
   );
