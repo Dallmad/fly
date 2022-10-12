@@ -17,7 +17,7 @@ export const Tags = (): ReturnComponentType => {
 
   return (
     <>
-      <div>popular tags</div>
+      <h4>Popular tags:</h4>
       {arrTypes.map(el => (
         <div key={el}>{el}</div>
       ))}

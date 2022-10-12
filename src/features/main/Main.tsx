@@ -7,10 +7,10 @@ export const Main: FC = (): ReturnComponentType => {
   return (
     <div>
       <Tags />
-      <div>recipes</div>
-      <div>products</div>
-      <div>news</div>
-      <div>restaurants</div>
+      <h4>Recipes</h4>
+      <h4>Products</h4>
+      <h4>News</h4>
+      <h4>Restaurants</h4>
     </div>
   );
 };
