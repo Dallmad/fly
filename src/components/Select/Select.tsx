@@ -1,11 +1,13 @@
 import React, { ChangeEvent } from 'react';
 
+import style from './Select.module.scss';
 import { SelectPropsType } from './types';
 
 export const Select: React.FC<SelectPropsType> = ({
   options,
   onChange,
   onChangeOption,
+  title,
   ...restProps
 }) => {
   const mappedOptions = options
@@ -25,8 +27,19 @@ export const Select: React.FC<SelectPropsType> = ({
   };
 
   return (
-    <select onChange={onChangeCallback} {...restProps}>
-      {mappedOptions}
-    </select>
+    <div className={style.container}>
+      <div className={style.title}>
+        {title}
+        {'\u00A0'}
+      </div>
+      <select
+        title={title}
+        onChange={onChangeCallback}
+        {...restProps}
+        className={style.select}
+      >
+        {mappedOptions}
+      </select>
+    </div>
   );
 };

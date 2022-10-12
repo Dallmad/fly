@@ -16,7 +16,7 @@ export const AppRoutes: FC = (): ReturnComponentType => {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Main />} />
+        <Route path={`${PATH.MAIN}`} element={<Main />} />
         <Route path={`${PATH.RECIPE}`} element={<Recipes />} />
         <Route path={`${PATH.RECIPE}/:id`} element={<Recipe />} />
         <Route path={`${PATH.PRODUCT}`} element={<Products />} />

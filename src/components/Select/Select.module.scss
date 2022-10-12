@@ -1,0 +1,13 @@
+@import 'src/common/styles/mixins';
+@import 'src/common/styles/variables';
+
+.container {
+  @include flex(row, center, center);
+  .title {
+    @include text($secondFontFamily, 20px, 16px, 500);
+  }
+  .select {
+    @include text($secondFontFamily, 20px, 16px, 500);
+    width: 50px;
+  }
+}

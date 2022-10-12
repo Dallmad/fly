@@ -47,6 +47,7 @@ export const Recipes: FC = (): ReturnComponentType => {
   return (
     <div className={style.container}>
       <Select
+        title="Items on page"
         className={style.select}
         value={numberItems}
         onChangeOption={setNumberItems}
