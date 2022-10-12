@@ -26,7 +26,7 @@ export const Header: FC = () => {
   };
 
   return (
-    <div className={style.header}>
+    <header className={style.header}>
       <button type="button" onClick={toHomeHandle} className={style.button_logo}>
         <img src={logo} alt="logo" className={style.logo} />
       </button>
@@ -43,6 +43,6 @@ export const Header: FC = () => {
           <img src={lens} alt="search" className={style.lens} />
         </button>
       </div>
-    </div>
+    </header>
   );
 };

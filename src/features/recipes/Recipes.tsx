@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { NavLink, useSearchParams } from 'react-router-dom';
 
 import style from './Recipes.module.scss';
@@ -12,7 +12,7 @@ import { PATH } from 'enums';
 import { ARRAY_FOR_SELECT } from 'enums/ArrayForSelect';
 import { Recipe } from 'features/recipes/recipe/Recipe';
 import { usePagination } from 'hooks';
-import { AppRootStateType } from 'state';
+import { AppRootStateType, useTypedDispatch } from 'state';
 import { fetchRecipes, RecipesType } from 'state/reducers/recipes/recipes-reducer';
 
 export const Recipes: FC = (): ReturnComponentType => {
@@ -20,7 +20,7 @@ export const Recipes: FC = (): ReturnComponentType => {
 
   const [numberItems, setNumberItems] = useState(recipes.size);
 
-  const dispatch = useDispatch();
+  const dispatch = useTypedDispatch();
 
   const { firstContentIndex, page, setPage, totalPages } = usePagination({
     contentPerPage: +recipes.size,
@@ -30,9 +30,7 @@ export const Recipes: FC = (): ReturnComponentType => {
   const [, setSizeParams] = useSearchParams();
 
   useEffect(() => {
-    dispatch(
-      fetchRecipes(`${firstContentIndex}`, `${numberItems}`, recipes.search) as any,
-    );
+    dispatch(fetchRecipes(`${firstContentIndex}`, `${numberItems}`, recipes.search));
     setSizeParams(
       recipes.search
         ? {

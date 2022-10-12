@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 
-import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import style from './Recipe.module.scss';
 
 import { ReturnComponentType } from 'common';
 import { RecipeItem } from 'features/recipes/recipe/recipeItem/RecipeItem';
+import { useTypedDispatch } from 'state';
 import { fetchRecipe } from 'state/reducers/recipe/recipe-reducer';
 
 type SmallRecipeType = {
@@ -23,11 +23,11 @@ export const Recipe = ({
   const params = useParams();
   const recipeId = params.id;
 
-  const dispatch = useDispatch();
+  const dispatch = useTypedDispatch();
 
   useEffect(() => {
     if (recipeId) {
-      dispatch(fetchRecipe(+recipeId) as any);
+      dispatch(fetchRecipe(+recipeId));
     }
   }, [recipeId]);
 
